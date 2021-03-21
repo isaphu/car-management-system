@@ -1,9 +1,5 @@
-body {
-    background: linear-gradient(
-      90deg,
-      rgb(23,71,157) 25%,
-      rgba(255,255,255) 100%
-    );
+body { 
+    background-color: rgb(23,71,157) 
 }
 
 .cms-wrap {
