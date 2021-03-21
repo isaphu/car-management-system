@@ -9,7 +9,7 @@ function App() {
       <CarForm />
     </div>
       <div className='car-form-made-with'>
-        <h4 style={{ color: 'white' }}>Made with 💗 by Isa</h4>
+        <h4 style={{ color: 'white' }}>Made with 💘 by Isa</h4>
       </div>
     </div>
   );

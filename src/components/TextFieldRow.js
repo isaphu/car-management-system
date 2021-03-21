@@ -1,10 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { IconButton } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import SaveIcon from '@material-ui/icons/Save';
 import RemoveIcon from '@material-ui/icons/Remove';
-import AddIcon from '@material-ui/icons/Add';
 import { makeStyles } from '@material-ui/core';
 
 const useStyle = makeStyles((theme) => ({
@@ -19,18 +18,18 @@ const useStyle = makeStyles((theme) => ({
 }));
 
 function TextFieldRow(props) {
+    const [isEdit, setIsEdit] = useState(false);
     const classes = useStyle();
     const {
         carInfo,
         handleRemoveFields,
-        handleAddFields,
         handleChange,
-        handleSubmit,
     } = props;
 
     return (
         <div key={carInfo.id}>
             <TextField
+                disabled={!isEdit}
                 variant="outlined"
                 name='licensePlate'
                 label='License Plates'
@@ -38,6 +37,7 @@ function TextFieldRow(props) {
                 onChange={event => handleChange(carInfo.id, event)}
             />
             <TextField
+                disabled={!isEdit}
                 variant="outlined"
                 name='carBrands'
                 label='Brands'
@@ -46,6 +46,7 @@ function TextFieldRow(props) {
 
             />
             <TextField
+                disabled={!isEdit}
                 variant="outlined"
                 name='carModels'
                 label='Models'
@@ -54,6 +55,7 @@ function TextFieldRow(props) {
 
             />
             <TextField
+                disabled={!isEdit}
                 id='remark-box'
                 variant="outlined"
                 name='carRemarks'
@@ -61,28 +63,38 @@ function TextFieldRow(props) {
                 width='100ch'
                 value={carInfo.carRemarks}
                 onChange={event => handleChange(carInfo.id, event)}
-
             />
             <IconButton
                 onClick={() => handleRemoveFields(carInfo.id)}>
                 <RemoveIcon />
             </IconButton>
-            <IconButton
-                onClick={() => handleAddFields()}>
-                <AddIcon />
-            </IconButton>
-            <Button
-                variant="contained"
-                color="primary"
-                size="small"
-                className={classes.button}
-                startIcon={<SaveIcon />}
-                onClick={handleSubmit}
-            >
-                Save
-                        </Button>
+            {isEdit ?
+                (
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        size="small"
+                        className={classes.button}
+                        startIcon={<SaveIcon />}
+                        onClick={() => setIsEdit(false)}
+                    >
+                        Save
+                    </Button>
+                ) : (
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        size="small"
+                        className={classes.button}
+                        startIcon={<SaveIcon />}
+                        onClick={() => setIsEdit(true)}
+                    >
+                        Edit
+                    </Button>
+                )
+            }
         </div>
     )
 }
 
-export default TextFieldRow
+export default TextFieldRow;
