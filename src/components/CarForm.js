@@ -5,9 +5,6 @@ import IDUtils from '../util/id-util';
 import { makeStyles } from '@material-ui/core';
 import { IconButton } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
-// import Button from '@material-ui/core/Button';
-// import SaveIcon from '@material-ui/icons/Save';
-// import RemoveIcon from '@material-ui/icons/Remove';
 import AddIcon from '@material-ui/icons/Add';
 
 
@@ -22,7 +19,7 @@ const useStyle = makeStyles((theme) => ({
     }
 }));
 
-function Car(props) {
+function Car(_props) {
     const classes = useStyle();
     const [inputField, setInputField] = useState({ id: 0, licensePlate: '', carBrands: '', carModels: '', carRemarks: '' });
     const [data, setData] = useState([]);
@@ -98,7 +95,7 @@ function Car(props) {
                         onClick={() => handleAddFields()}>
                         <AddIcon />
                     </IconButton>
-                    {data.map((carInfo, index) => (
+                    {data.map((carInfo, _index) => (
                         <TextFieldRow
                             key={carInfo.id}
                             carInfo={carInfo}

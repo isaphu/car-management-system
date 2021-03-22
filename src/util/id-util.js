@@ -1,4 +1,4 @@
-let id = 0
+let id = 0;
 
 function uniqueId() {
     return ++id
