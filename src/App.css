@@ -7,7 +7,7 @@ body {
     flex-direction: column;
     justify-content: start;
     width: 1200px;
-    min-height: 600px;
+    min-height: 500px;
     background: white;
     text-align: center;
     margin: 128px auto;

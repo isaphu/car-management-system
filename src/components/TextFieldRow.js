@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { IconButton } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import SaveIcon from '@material-ui/icons/Save';
-import RemoveIcon from '@material-ui/icons/Remove';
+import DeleteIcon from '@material-ui/icons/Delete';
 import { makeStyles } from '@material-ui/core';
+import EditIcon from '@material-ui/icons/Edit';
 
 const useStyle = makeStyles((theme) => ({
     root: {
@@ -30,6 +30,7 @@ function TextFieldRow(props) {
         <div key={carInfo.id}>
             <TextField
                 disabled={!isEdit}
+                size='small'
                 variant="outlined"
                 name='licensePlate'
                 label='License Plates'
@@ -38,6 +39,7 @@ function TextFieldRow(props) {
             />
             <TextField
                 disabled={!isEdit}
+                size='small'
                 variant="outlined"
                 name='carBrands'
                 label='Brands'
@@ -47,6 +49,7 @@ function TextFieldRow(props) {
             />
             <TextField
                 disabled={!isEdit}
+                size='small'
                 variant="outlined"
                 name='carModels'
                 label='Models'
@@ -56,6 +59,7 @@ function TextFieldRow(props) {
             />
             <TextField
                 disabled={!isEdit}
+                size='small'
                 id='remark-box'
                 variant="outlined"
                 name='carRemarks'
@@ -64,10 +68,6 @@ function TextFieldRow(props) {
                 value={carInfo.carRemarks}
                 onChange={event => handleChange(carInfo.id, event)}
             />
-            <IconButton
-                onClick={() => handleRemoveFields(carInfo.id)}>
-                <RemoveIcon />
-            </IconButton>
             {isEdit ?
                 (
                     <Button
@@ -86,13 +86,23 @@ function TextFieldRow(props) {
                         color="primary"
                         size="small"
                         className={classes.button}
-                        startIcon={<SaveIcon />}
+                        startIcon={<EditIcon />}
                         onClick={() => setIsEdit(true)}
                     >
                         Edit
                     </Button>
                 )
             }
+            <Button
+                variant="contained"
+                color="primary"
+                size="small"
+                className={classes.button}
+                startIcon={<DeleteIcon />}            
+                onClick={() => handleRemoveFields(carInfo.id)}
+                >
+                    Delete
+            </Button>
         </div>
     )
 }

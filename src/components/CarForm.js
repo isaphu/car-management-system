@@ -3,9 +3,9 @@ import Container from '@material-ui/core/Container';
 import TextFieldRow from './TextFieldRow';
 import IDUtils from '../util/id-util';
 import { makeStyles } from '@material-ui/core';
-import { IconButton } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
-import AddIcon from '@material-ui/icons/Add';
+import SaveIcon from '@material-ui/icons/Save';
+import Button from '@material-ui/core/Button';
 
 
 const useStyle = makeStyles((theme) => ({
@@ -63,6 +63,7 @@ function Car(_props) {
                 <form className={classes.root}>
                     <TextField
                         variant="outlined"
+                        size='small'
                         name='licensePlate'
                         label='License Plates'
                         value={inputField.licensePlate}
@@ -70,6 +71,7 @@ function Car(_props) {
                     />
                     <TextField
                         variant="outlined"
+                        size='small'
                         name='carBrands'
                         label='Brands'
                         value={inputField.carBrands}
@@ -77,6 +79,7 @@ function Car(_props) {
                     />
                     <TextField
                         variant="outlined"
+                        size='small'
                         name='carModels'
                         label='Models'
                         value={inputField.carModels}
@@ -85,16 +88,23 @@ function Car(_props) {
                     <TextField
                         id='remark-box'
                         variant="outlined"
+                        size='small'
                         name='carRemarks'
                         label='Remarks'
                         width='100ch'
                         value={inputField.carRemarks}
                         onChange={event => handleChangeInput(event)}
                     />
-                    <IconButton
-                        onClick={() => handleAddFields()}>
-                        <AddIcon />
-                    </IconButton>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        size="small"
+                        className={classes.button}
+                        startIcon={<SaveIcon />}
+                        onClick={() => handleAddFields()}
+                        >
+                            Save
+                    </Button>
                     {data.map((carInfo, _index) => (
                         <TextFieldRow
                             key={carInfo.id}
